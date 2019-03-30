@@ -1,4 +1,5 @@
 import re
+import string
 
 
 def compare_each_subversion(val_1, val_2):
@@ -10,35 +11,66 @@ def compare_each_subversion(val_1, val_2):
         return -1
 
 
+def create_list_with_numbers(array_string):
+    list = []
+    for element in array_string:
+        list.append(int(element))
+
+    return list
+
+
+def remove_last_if_not_digit(str):
+    _str = str
+
+    if str[-1] not in string.digits:
+        _str = _str[:-1]
+
+    return _str
+
+
 def compare_version_strings(string_1, string_2):
-    str_1_with_dots = re.sub("[^0-9]", ".", string_1)
-    str_2_with_dots = re.sub("[^0-9]", ".", string_2)
+    """Returns:
+         0 if both versions are equal
+        -1 if LHS version is BIGGER than RHS version
+         1 if LHS version is SMALLER than RHS version
+     """
 
-    str1_splitted = str_1_with_dots.split(".")
-    str2_splitted = str_2_with_dots.split(".")
+    string_1 = remove_last_if_not_digit(string_1)
+    string_2 = remove_last_if_not_digit(string_2)
 
-    str1_splitted_number = []
-    for element in str1_splitted:
-        str1_splitted_number.append(int(element))
+    str_1_with_dots_only = re.sub("[^0-9]", ".", string_1)
+    str_2_with_dots_only = re.sub("[^0-9]", ".", string_2)
 
-    str2_splitted_number = []
-    for element in str2_splitted:
-        str2_splitted_number.append(int(element))
+    str1_splitted = str_1_with_dots_only.split(".")
+    str2_splitted = str_2_with_dots_only.split(".")
 
-    max_length = max(len(str1_splitted_number), len(str2_splitted_number))
-    min_length = min(len(str1_splitted_number), len(str2_splitted_number))
+    str1_splitted_as_number = create_list_with_numbers(str1_splitted)
+    str2_splitted_as_number = create_list_with_numbers(str2_splitted)
+
+    len_str_1 = len(str1_splitted_as_number)
+    len_str_2 = len(str2_splitted_as_number)
+
+    max_length = max(len_str_1, len_str_2)
+    min_length = min(len_str_1, len_str_2)
 
     check = 0
     for i in range(max_length):
 
+        # If any of the subversions are not equal, we can return the result
         if check != 0:
             break
 
+        # If strings are equal up to the point where one ends and the other continue,
+        # the bibbger string is the bigger
         if i > (min_length - 1):
-            check = 1
+            if len_str_1 < len_str_2:
+                check = 1
+            else:
+                check = -1
+
             break
 
-        check = compare_each_subversion(str1_splitted_number[i], str2_splitted_number[i])
+        check = compare_each_subversion(str1_splitted_as_number[i], str2_splitted_as_number[i])
 
     return check
 
