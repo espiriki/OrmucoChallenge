@@ -26,6 +26,9 @@ class CheckLinesTest(unittest.TestCase):
     def test_second_longer(self):
         self.assertEqual(Question2.compare_version_strings("1.9", "1.10.5"), 1)
 
+    def test_dashes(self):
+        self.assertEqual(Question2.compare_version_strings("1-9", "1-10"), 1)
+
     def test_many_subversions_different_lenghts(self):
         self.assertEqual(Question2.compare_version_strings("1.9", "1.9.5"), 1)
 

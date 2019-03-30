@@ -1,6 +1,9 @@
 import re
 import string
 
+SPLIT_CHARACTER = "."
+REMOVE_NON_DIGITS_REGEX = "[^0-9]"
+
 
 def compare_each_subversion(val_1, val_2):
     if val_1 == val_2:
@@ -38,11 +41,11 @@ def compare_version_strings(string_1, string_2):
     string_1 = remove_last_if_not_digit(string_1)
     string_2 = remove_last_if_not_digit(string_2)
 
-    str_1_with_dots_only = re.sub("[^0-9]", ".", string_1)
-    str_2_with_dots_only = re.sub("[^0-9]", ".", string_2)
+    str_1_with_dots_only = re.sub(REMOVE_NON_DIGITS_REGEX, SPLIT_CHARACTER, string_1)
+    str_2_with_dots_only = re.sub(REMOVE_NON_DIGITS_REGEX, SPLIT_CHARACTER, string_2)
 
-    str1_splitted = str_1_with_dots_only.split(".")
-    str2_splitted = str_2_with_dots_only.split(".")
+    str1_splitted = str_1_with_dots_only.split(SPLIT_CHARACTER)
+    str2_splitted = str_2_with_dots_only.split(SPLIT_CHARACTER)
 
     str1_splitted_as_number = create_list_with_numbers(str1_splitted)
     str2_splitted_as_number = create_list_with_numbers(str2_splitted)
