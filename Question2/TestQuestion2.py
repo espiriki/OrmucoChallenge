@@ -6,7 +6,7 @@ import unittest
 #  UNIT TESTS
 ########################################################################
 
-class CheckLinesTest(unittest.TestCase):
+class VersionStringTests(unittest.TestCase):
 
     def test_equal(self):
         self.assertEqual(Question2.compare_version_strings("1.1", "1.1"), 0)
