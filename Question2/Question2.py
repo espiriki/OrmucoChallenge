@@ -59,12 +59,12 @@ def compare_version_strings(string_1, string_2):
     check = 0
     for i in range(max_length):
 
-        # If any of the subversions are not equal, we can return the result
+        # If any of the sub-versions are not equal, we can return the result
         if check != 0:
             break
 
         # If strings are equal up to the point where one ends and the other continue,
-        # the bibbger string is the bigger
+        # the bigger string is the bigger
         if i > (min_length - 1):
             if len_str_1 < len_str_2:
                 check = 1
