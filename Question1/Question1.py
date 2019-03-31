@@ -1,8 +1,5 @@
 def starts_first(line_1, line_2):
-    if line_1[0] < line_2[0]:
-        return 1
-    else:
-        return 2
+    return 1 if line_1[0] < line_2[0] else 0
 
 
 def get_line_length(line):
