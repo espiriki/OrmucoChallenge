@@ -33,7 +33,6 @@ def get_line_atributes(line):
 
 
 def check_overlap(line_1, line_2):
-
     start_line_1 = get_line_atributes(line_1)[0]
     end_line_1 = get_line_atributes(line_1)[1]
     length_line_1 = get_line_atributes(line_1)[2]
@@ -72,4 +71,4 @@ def check_overlap(line_1, line_2):
 
 
 if __name__ == '__main__':
-    print(check_overlap((0, 0), (0, 0)))
+    pass

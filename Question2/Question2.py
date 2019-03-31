@@ -79,5 +79,4 @@ def compare_version_strings(string_1, string_2):
 
 
 if __name__ == '__main__':
-    print(compare_version_strings("1.10", "1.9.5"))
-    print(compare_version_strings("1.9", "1.9.5"))
+    pass
