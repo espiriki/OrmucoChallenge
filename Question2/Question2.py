@@ -15,11 +15,7 @@ def compare_each_subversion(val_1, val_2):
 
 
 def create_list_with_numbers(array_string):
-    list = []
-    for element in array_string:
-        list.append(int(element))
-
-    return list
+    return [int(i) for i in array_string]
 
 
 def remove_last_if_not_digit(str):
