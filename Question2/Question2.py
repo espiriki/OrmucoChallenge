@@ -3,6 +3,9 @@ import string
 
 SPLIT_CHARACTER = "."
 REMOVE_NON_DIGITS_REGEX = "[^0-9]"
+VERSIONS_ARE_EQUAL = 0
+LHS_IS_BIGGER = 1
+RHS_IS_BIGGER = -1
 
 
 def compare_each_subversion(val_1, val_2):
