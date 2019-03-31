@@ -6,13 +6,7 @@ def starts_first(line_1, line_2):
 
 
 def get_line_length(line):
-    if line[0] == line[1]:
-        return 0
-
-    if line[1] < line[0]:
-        return line[0] - line[1]
-    else:
-        return line[1] - line[0]
+    return abs(line[0] - line[1])
 
 
 def get_line_atributes(line):
@@ -33,7 +27,6 @@ def get_line_atributes(line):
 
 
 def check_overlap(line_1, line_2):
-
     """Returns TRUE if the lines overlap, and false otherwise"""
 
     start_line_1 = get_line_atributes(line_1)[0]
