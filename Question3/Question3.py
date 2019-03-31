@@ -9,7 +9,8 @@ ADDED_TO_CACHE = 2
 class MyCache:
     """In this class the MRU (most recently used) is the leftmost element of the deque
     that represents the cache memory.
-    That said, the LRU (last recently used) is the rightmost element"""
+    That said, the LRU (last recently used) is the rightmost element
+    """
 
     def __init__(self):
 
@@ -26,13 +27,13 @@ class MyCache:
             self.hit_count = self.hit_count + 1
             return CACHE_HIT_HAPPENED
 
-        # If it's not present, append to the cache memory
-        # If its full, remove the LRU (the rightmost one)
+        # If its full, remove the LRU (the rightmost one) and add the current one to the cache memory
         if (len(self.cache_memory) + 1) > self.MAX_CACHE_SIZE:
             self.cache_memory.pop()
             self.cache_memory.appendleft(element)
             return CACHE_FULL_DISCARDED_LRU
 
+        # If it's not present, append to the cache memory
         else:
             self.cache_memory.appendleft(element)
             return ADDED_TO_CACHE

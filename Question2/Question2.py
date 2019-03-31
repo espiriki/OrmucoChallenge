@@ -60,7 +60,7 @@ def compare_version_strings(string_1, string_2):
             break
 
         # If strings are equal up to the point where one ends and the other continue,
-        # the bigger string is the bigger
+        # the bigger string is the most recent
         if i > (min_length - 1):
             if len_str_1 < len_str_2:
                 check = 1
@@ -69,6 +69,7 @@ def compare_version_strings(string_1, string_2):
 
             break
 
+        # update the check variable to see if we need to keep looking
         check = compare_each_subversion(str1_splitted_as_number[i], str2_splitted_as_number[i])
 
     return check
